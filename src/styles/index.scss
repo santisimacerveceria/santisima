@@ -1,0 +1,91 @@
+@import "foundation";
+
+$body-font-color: $white;
+$body-background: #080808;
+$anchor-color: $white;
+
+@include foundation-global-styles;
+@include foundation-typography-base;
+
+@import "../../temp/_sprite";
+@import "mixins/_sprite";
+
+body {
+  @include flex-grid-row;
+  justify-content: center;
+}
+
+header, footer {
+  @include flex-grid-column(10);
+  @include breakpoint(small only) {
+    @include flex-grid-column(12);
+  }
+
+  &> div {
+    @include flex-grid-row;
+  }
+}
+
+header {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+
+  .logo {
+    justify-content: center;
+  }
+  h2 {
+    display: none;
+  }
+}
+
+.info {
+  @include flex-grid-row(nest);
+
+  @include breakpoint(small) {
+    @include flex-grid-column(12);
+  }
+  @include breakpoint(medium) {
+    @include flex-grid-column(6);
+  }
+
+  margin: .5em 0;
+
+  .icon {
+    @include flex-grid-column(shrink);
+  }
+
+  .text {
+    @include flex-grid-column;
+  }
+}
+
+.social {
+  margin: .5em 0 0 0;
+  .icon {
+    @include flex-grid-column(3);
+  }
+}
+
+@include breakpoint(medium) {
+  .info {
+    width: auto;
+  }
+}
+
+.icon {
+  span {
+    display: none;
+  }
+}
+
+$icons-key: map-keys($icons);
+@for $i from 2 through length($icons-key) {
+  $icon: nth($icons-key, $i);
+  .#{$icon} {
+    &:before {
+      @include sprite($icon);
+      content: '';
+    }
+  }
+}
