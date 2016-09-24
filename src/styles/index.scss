@@ -63,7 +63,7 @@ header {
 .social {
   margin: .5em 0 0 0;
   .icon {
-    @include flex-grid-column(3);
+    @include flex-grid-column;
   }
 }
 

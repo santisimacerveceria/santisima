@@ -211,4 +211,4 @@ gulp.task('watch', ['default'], ()=> {
     gulp.watch(source.staticFiles, ['staticFiles']);
 });
 
-gulp.task('default', ['pre', 'html', 'js', 'css', 'images', 'staticImages', 'staticFiles']);
+gulp.task('default', ['html', 'js', 'css', 'images', 'staticImages', 'staticFiles']);
